@@ -13,15 +13,15 @@ For purposes of simplicity the program during this phase will be editing contact
 Folder Contents
 ---------------
 The following contents should be contained in this repository:  
-README.md (This file.) 
-address_book_SDD.odt 
-.gitignore 
-AddressBookUML.png 
-AddressBookUML.xml 
-AddressBook/AddressBook.html 
-AddressBook/CSSAddressBook.css 
-AddressBook/JSAddressBook.js 
-AddressBook/.idea/.name
-AddressBook/.idea/AddressBook.iml
-AddressBook/.idea/modules.xml
-AddressBook/.idea/vcs.xml
+README.md (This file.)  
+address_book_SDD.odt  
+.gitignore  
+AddressBookUML.png  
+AddressBookUML.xml  
+AddressBook/AddressBook.html  
+AddressBook/CSSAddressBook.css  
+AddressBook/JSAddressBook.js  
+AddressBook/.idea/.name  
+AddressBook/.idea/AddressBook.iml  
+AddressBook/.idea/modules.xml  
+AddressBook/.idea/vcs.xml  
