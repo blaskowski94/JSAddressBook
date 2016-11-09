@@ -5,9 +5,6 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
-      <excludeFolder url="file://$USER_HOME$/WebstormProjects/AddressBook/.tmp" />
-      <excludeFolder url="file://$USER_HOME$/WebstormProjects/AddressBook/temp" />
-      <excludeFolder url="file://$USER_HOME$/WebstormProjects/AddressBook/tmp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

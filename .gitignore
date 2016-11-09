@@ -1,1 +1,3 @@
 *Ignore the fallowing files from the repository.
+~*.*
+/AddressBook/.idea/workspace.xml
