@@ -1,6 +1,3 @@
 *Ignore the fallowing files from the repository.
 ~*.*
 /AddressBook/.idea/
-/AddressBook/.idea/modules.xml
-/AddressBook/.idea/workspace.xml
-.idea/
