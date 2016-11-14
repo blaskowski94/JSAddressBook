@@ -2,10 +2,11 @@
  * Created by Manuel on 11/6/2016.
  */
 
-function contact(name, phoneNum, email){
+function contact(name, phoneNum, email, open){
     this.name = name;
     this.phoneNum = phoneNum;
     this.email = email;
+    this.open = open;
 }
 
 var contactAry = [
@@ -15,17 +16,20 @@ var contactAry = [
                 ];
 
 function openContact(evt, contactNum) {
-    var i, x, tablinks, y;
-    y = document.getElementById("welcome").style.display = "none";
+    document.getElementById("welcome").style.display = "none";
     document.getElementById("name").innerHTML = contactAry[contactNum].name;
     document.getElementById("phoneNum").innerHTML = contactAry[contactNum].phoneNum;
     document.getElementById("email").innerHTML = contactAry[contactNum].email;
     document.getElementById("contact").style.display = "block";
-
 
     // tablinks = document.getElementsByClassName("tablink");
     // for (i = 0; i < x.length; i++) {
     //     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
     // }
     // evt.currentTarget.className += " w3-red";
+}
+
+function welcome(){
+    document.getElementById("welcome").style.display = "block";
+    document.getElementById("contact").style.display = "none";
 }
