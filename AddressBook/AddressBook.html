@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href= "CssAddressBook.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="JSAddressBook.js"></script>
 </head>
 <body>
 
@@ -33,13 +35,17 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <p><a href="#">Bob Laskowski</a></p>
-            <p><a href="#">Hunter Winner</a></p>
-            <p><a href="#">Manny Xinico</a></p>
+            <p><a href="javascript:void(0)" onclick="openContact(event, 0)">Bob Laskowski</a></p>
+            <p><a href="javascript:void(0)" onclick="openContact(event, 1)">Hunter Winner</a></p>
+            <p><a href="javascript:void(0)" onclick="openContact(event, 2)">Manny Xinico</a></p>
         </div>
         <div class="col-sm-8 text-left">
             <h1>Welcome to your address book</h1>
-            <p>Click a name on the left to see contact information.</p>
+            <p id="welcome">Click a name on the left to see contact information.</p>
+            <div id="contact" class="contact">
+                <h2 id="name"></h2>
+                <p id="phoneNum">Phone number: </p>
+                <p id ="email">E-mail: </p>
             <hr>
         </div>
     </div>
