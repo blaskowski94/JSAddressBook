@@ -11,7 +11,7 @@ function contact(name, phoneNum, email, open){
 
 var contactAry = [
                 new contact("Bob Laskowski", "262-309-4205", "laskowsr@augsburg.edu"),
-                new contact("Hunter Winner", "555-555-5555", "hunter@winnder.com"),
+                new contact("Hunter Winner", "651-500-1930", "winnerh@augsburg.edu"),
                 new contact("Manny Xinico", "555-555-5555", "manny@xinico.com")
                 ];
 
