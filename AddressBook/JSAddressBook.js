@@ -73,9 +73,47 @@ function save() {
     openContact(null, contactNum);
     pageLoad();
 }
+
+function cancel(){
+    var contactNum = 0;
+    for (var i = 0; i < contactAry.length; i++) {
+        if (contactAry[i].open)
+            contactNum = i;
+    }
+    document.getElementById("edit").style.display = "none";
+    openContact(null, contactNum);
+    pageLoad();
+}
+
 //Loads names to HTML when page loads
 function pageLoad() {
     document.getElementById("contact0").innerHTML = contactAry[0].name;
     document.getElementById("contact1").innerHTML = contactAry[1].name;
     document.getElementById("contact2").innerHTML = contactAry[2].name;
+}
+
+function del(){
+    var contactNum = 0;
+    for (var i = 0; i < contactAry.length; i++) {
+        if (contactAry[i].open)
+            contactNum = i;
+    }
+    contactAry.splice(contactNum, 1);
+    renderList();
+    home();
+}
+
+function renderList(){
+    var list = document.getElementById("contactList");
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+    }
+    for(var i=0;i<contactAry.length;i++){
+        var entry = document.createElement('li');
+        entry.appendChild(document.createTextNode(contactAry[i].name));
+        entry.setAttribute('onClick','openContact(event, '+i+')');
+        entry.setAttribute('id','contact' + i);
+        entry.setAttribute('class','tab');
+        list.appendChild(entry);
+    }
 }

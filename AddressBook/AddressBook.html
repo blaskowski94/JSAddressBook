@@ -34,13 +34,10 @@
 <!--Links to elements in js Array-->
 <div class="container-fluid midPane">
     <div class="row">
-        <ul class="col-xs-2 sidenav text-center">
-            <li onclick="openContact(event, 0)" id="contact0" class="tab">
-            </li>
-            <li onclick="openContact(event, 1)" id="contact1" class="tab">
-            </li>
-            <li onclick="openContact(event, 2)" id="contact2" class="tab">
-            </li>
+        <ul class="col-xs-2 sidenav text-center" id="contactList">
+            <li onclick="openContact(event, 0)" id="contact0" class="tab"></li>
+            <li onclick="openContact(event, 1)" id="contact1" class="tab"></li>
+            <li onclick="openContact(event, 2)" id="contact2" class="tab"></li>
         </ul>
 
         <!--Sets up basic page layout-->
@@ -55,6 +52,7 @@
                 <label>E-mail: </label>
                 <p id="email"></p>
                 <button class="btn btn-primary" type="button" onClick="edit()">Edit</button>
+                <button class="btn btn-primary" type="button" onClick="del()">Delete</button>
             </div>
             <div id="edit" class="edit">
                 <div class="form-group row">
@@ -76,7 +74,7 @@
                     </div>
                 </div>
                 <button class="btn btn-primary" type="button" onClick="save()">Save</button>
-
+                <button class="btn btn-primary" type="button" onClick="cancel()">Cancel</button>
             </div>
         </div>
     </div>
