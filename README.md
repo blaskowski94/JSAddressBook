@@ -22,6 +22,7 @@ AddressBook/AddressBook.html
 AddressBook/CSSAddressBook.css  
 AddressBook/JSAddressBook.js  
 AddressBook/Images/logo.png
+AddressBook/Testing/Address_Book_Testing.odt
 
 Running Web Address Book
 ------------------------
