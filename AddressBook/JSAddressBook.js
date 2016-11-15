@@ -10,17 +10,21 @@ function contact(name, phoneNum, email, open){
 }
 
 var contactAry = [
-                new contact("Bob Laskowski", "262-309-4205", "laskowsr@augsburg.edu"),
-                new contact("Hunter Winner", "651-500-1930", "winnerh@augsburg.edu"),
-                new contact("Manny Xinico", "555-555-5555", "manny@xinico.com")
+                new contact("Bob Laskowski", "262-309-4205", "laskowsr@augsburg.edu", false),
+                new contact("Hunter Winner", "651-500-1930", "winnerh@augsburg.edu", false),
+                new contact("Manny Xinico", "555-555-5555", "manny@xinico.com", false)
                 ];
 
-function openContact(evt, contactNum) {
+function openContact(contactNum) {
+    for(var i = 0; i < contactAry.length; i++){
+        contactAry[i].open = false;
+    }
     document.getElementById("welcome").style.display = "none";
     document.getElementById("name").innerHTML = contactAry[contactNum].name;
     document.getElementById("phoneNum").innerHTML = contactAry[contactNum].phoneNum;
     document.getElementById("email").innerHTML = contactAry[contactNum].email;
     document.getElementById("contact").style.display = "block";
+    contactAry[contactNum].open = true;
 
     // tablinks = document.getElementsByClassName("tablink");
     // for (i = 0; i < x.length; i++) {
@@ -32,4 +36,13 @@ function openContact(evt, contactNum) {
 function welcome(){
     document.getElementById("welcome").style.display = "block";
     document.getElementById("contact").style.display = "none";
+}
+
+function edit(){
+    document.getElementById("contact").style.display = "none";
+    document.getElementById("editname").innerHTML
+}
+
+function save(){
+
 }
