@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Loads CSS for background-->
 <head>
     <title>Address Book</title>
     <link rel="icon" href='Images/logo.png'>
@@ -12,7 +13,7 @@
     <script src="JSAddressBook.js"></script>
 </head>
 <body onload="javascript:pageLoad()" class="container-fluid">
-
+<!--Sets up navigation bar-->
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -23,15 +24,10 @@
         <a class="navbar-brand" href="javascript:void(0)" onclick="home()"><img src='Images/logo.png' width=25 height=25></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-            <li><a href="#">Add Contact</a></li>
-        </ul>
-    </div>
+        </div>
 </nav>
-
-
+<!--Links to elements in js Array-->
 <div class="row content container-fluid">
-
     <ul class="col-sm-2 sidenav text-center">
         <li href="javascript:void(0)" onclick="openContact(event, 0)" id="contact0" class="tab">
         </li>
@@ -40,7 +36,7 @@
         <li href="javascript:void(0)" onclick="openContact(event, 2)" id="contact2" class="tab">
         </li>
     </ul>
-
+    <!--Sets up basic page layout-->
     <div class="col-sm-10 mainContent">
         <h1>Welcome to your address book</h1>
         <p id="home">Click a name on the left to see contact information.</p>
@@ -77,7 +73,7 @@
         </div>
     </div>
 </div>
-
+<!--Footer of page-->
 <footer class="text-center">
     Bob Laskowski, Hunter Winner, Manny Xinico - 2016 - Compilers I - Project 3
 </footer>

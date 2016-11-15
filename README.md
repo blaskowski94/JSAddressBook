@@ -24,4 +24,13 @@ AddressBook/JSAddressBook.js
 AddressBook/.idea/.name  
 AddressBook/.idea/AddressBook.iml  
 AddressBook/.idea/modules.xml  
-AddressBook/.idea/vcs.xml  
+AddressBook/.idea/vcs.xml
+AddressBook/Images/logo.png
+
+Running Web Address Book
+------------------------
+This code was developed, tested and interpreted with the WebStorm 2016.2.4 IDE. 
+
+The contact data array has been hard coded to the file JSAddressBook.js, which an be edited from the javascript file and individual contacts can be edited with the edit option. 
+
+To run this code load the HTML file in any web browser, or use an IDE that interprets HTML, Javascript and CSS, WebStorm 2016.2.4 is the IDE recommended for the Web Address Book. 
