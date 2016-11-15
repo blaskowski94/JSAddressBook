@@ -1,4 +1,4 @@
-//Creates the conctact parameters
+//Creates the contact parameters
 function contact(name, phoneNum, email, open) {
     this.name = name;
     this.phoneNum = phoneNum;
@@ -24,7 +24,7 @@ function openContact(evt, contactNum) {
     document.getElementById("contact").style.display = "block";
     contactAry[contactNum].open = true;
 
-    if (evt != null) {
+    if (evt !== null) {
         var tabs = document.getElementsByClassName("tab");
         for (var i = 0; i < tabs.length; i++) {
             tabs[i].className = tabs[i].className.replace(" activeTab", "");

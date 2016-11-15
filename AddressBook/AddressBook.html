@@ -1,80 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Loads CSS for background-->
 <head>
     <title>Address Book</title>
     <link rel="icon" href='Images/logo.png'>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Loads CSS for background-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="CssAddressBook.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="JSAddressBook.js"></script>
 </head>
-<body onload="javascript:pageLoad()" class="container-fluid">
+<body onload="javascript:pageLoad()">
 <!--Sets up navigation bar-->
 <nav class="navbar navbar-inverse">
-    <div class="navbar-header">
+    <div class="navbar-header container-fluid">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="javascript:void(0)" onclick="home()"><img src='Images/logo.png' width=25 height=25></a>
+        <a class="navbar-brand" href="javascript:void(0)" onclick="home()"><img src='Images/logo.png' width=25 height=25
+                                                                                alt="Address Book"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Add Contact</a></li>
+        </ul>
+    </div>
 </nav>
 <!--Links to elements in js Array-->
-<div class="row content container-fluid">
-    <ul class="col-sm-2 sidenav text-center">
-        <li href="javascript:void(0)" onclick="openContact(event, 0)" id="contact0" class="tab">
-        </li>
-        <li href="javascript:void(0)" onclick="openContact(event, 1)" id="contact1" class="tab">
-        </li>
-        <li href="javascript:void(0)" onclick="openContact(event, 2)" id="contact2" class="tab">
-        </li>
-    </ul>
-    <!--Sets up basic page layout-->
-    <div class="col-sm-10 mainContent">
-        <h1>Welcome to your address book</h1>
-        <p id="home">Click a name on the left to see contact information.</p>
-        <div id="contact" class="contact">
-            <label for="name">Name: </label>
-            <p id="name"></p>
-            <label for="phonenum">Phone number: </label>
-            <p id="phoneNum"></p>
-            <label for="email">E-mail: </label>
-            <p id="email"></p>
-            <button class="btn btn-primary" onClick="edit()">Edit</button>
-        </div>
-        <div id="edit" class="edit">
-            <div class="form-group row">
-                <label for="example-text-input" class="col-xs-2 col-form-label">Name: </label>
-                <div class="col-xs-5">
-                    <input class="form-control" type="text" id="editname">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-search-input" class="col-xs-2 col-form-label">Phone number: </label>
-                <div class="col-xs-5">
-                    <input class="form-control" type="search" id="editphone">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-email-input" class="col-xs-2 col-form-label">Email: </label>
-                <div class="col-xs-5">
-                    <input class="form-control" type="email" id="editemail">
-                </div>
-            </div>
-            <button class="btn btn-primary" onClick="save()">Save</button>
+<div class="container-fluid midPane">
+    <div class="row">
+        <ul class="col-xs-2 sidenav text-center">
+            <li onclick="openContact(event, 0)" id="contact0" class="tab">
+            </li>
+            <li onclick="openContact(event, 1)" id="contact1" class="tab">
+            </li>
+            <li onclick="openContact(event, 2)" id="contact2" class="tab">
+            </li>
+        </ul>
 
+        <!--Sets up basic page layout-->
+        <div class="col-xs-10 mainContent">
+            <h1>Welcome to your address book</h1>
+            <p id="home">Click a name on the left to see contact information.</p>
+            <div id="contact" class="contact">
+                <label>Name: </label>
+                <p id="name"></p>
+                <label>Phone number: </label>
+                <p id="phoneNum"></p>
+                <label>E-mail: </label>
+                <p id="email"></p>
+                <button class="btn btn-primary" type="button" onClick="edit()">Edit</button>
+            </div>
+            <div id="edit" class="edit">
+                <div class="form-group row">
+                    <label class="col-xs-2 col-form-label">Name: </label>
+                    <div class="col-xs-5">
+                        <input class="form-control" type="text" id="editname">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-2 col-form-label">Phone number: </label>
+                    <div class="col-xs-5">
+                        <input class="form-control" type="search" id="editphone">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-2 col-form-label">Email: </label>
+                    <div class="col-xs-5">
+                        <input class="form-control" type="email" id="editemail">
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="button" onClick="save()">Save</button>
+
+            </div>
         </div>
     </div>
 </div>
 <!--Footer of page-->
-<footer class="text-center">
+<footer class="text-center container-fluid">
     Bob Laskowski, Hunter Winner, Manny Xinico - 2016 - Compilers I - Project 3
 </footer>
 </body>
