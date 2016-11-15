@@ -14,13 +14,11 @@ var contactAry = [
     new contact("Erik Steinmetz", "612-330-1062", "stainmeee@augsburg.edu", false)
 ];
 
-// T/F value to load variables on first page load
-var alreadyLoaded = false;
 // Global variables for commonly used IDs
 var addTabID, homeID, editID, nameID, phoneNumID, emailID, contactID, editnameID, editphoneID, editemailID;
 
 //Loads contact information when contact is selected
-function openContact(evt, contactNum) {
+function openContact(contactNum) {
     // Sets the open property of all contacts to false
     for (var i = 0; i < contactAry.length; i++) {
         contactAry[i].open = false;
@@ -111,7 +109,7 @@ function save() {
     // Hide edit screen
     editID.style.display = "none";
     // Display the contact
-    openContact(null, contactNum);
+    openContact(contactNum);
     renderList(contactNum);
     // Deselect add tab
     addTabID.className = "";
@@ -126,11 +124,12 @@ function cancel() {
             contactNum = i;
     }
     // If contact num is not null, open that contact back up
-    if(contactNum !== null){
-        openContact(null, contactNum);
+    if (contactNum !== null) {
+        renderList(contactNum);
+        openContact(contactNum);
     }
     // Otherwise go back to home screen
-    else{
+    else {
         home();
     }
     // Hide edit display, update contact list
@@ -161,7 +160,7 @@ function pageLoad() {
 // Functionality of delete button, prompts to confirm you want to delete, removes the contact if yes, does nothing otherwise
 function del() {
     // Assign T/F value to x based on answer to prompt
-    var x = confirm("Are you sure you want to delete?");
+    var x = confirm("Are you sure you want to delete this contact?");
     // If OK selected
     if (x) {
         // Determine which contact we are deleting
@@ -216,14 +215,13 @@ function renderList(selectedTab) {
     for (var i = 0; i < contactAry.length; i++) {
         var entry = document.createElement('li');
         entry.innerHTML = contactAry[i].name;
-        entry.setAttribute('onClick', 'openContact(event, ' + i + ')');
+        entry.setAttribute('onClick', 'openContact(' + i + ')');
         entry.setAttribute('id', 'contact' + i);
         entry.setAttribute('class', 'tab');
         // Highlight selected tab
-        if(i == selectedTab){
+        if (i == selectedTab) {
             entry.className += " activeTab";
         }
         list.appendChild(entry);
     }
-
 }
