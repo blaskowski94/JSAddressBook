@@ -20,6 +20,7 @@ function openContact(contactNum) {
         contactAry[i].open = false;
     }
     document.getElementById("welcome").style.display = "none";
+	document.getElementById("edit").style.display = "none";
     document.getElementById("name").innerHTML = contactAry[contactNum].name;
     document.getElementById("phoneNum").innerHTML = contactAry[contactNum].phoneNum;
     document.getElementById("email").innerHTML = contactAry[contactNum].email;
@@ -35,14 +36,43 @@ function openContact(contactNum) {
 
 function welcome(){
     document.getElementById("welcome").style.display = "block";
+	document.getElementById("edit").style.display = "none";
     document.getElementById("contact").style.display = "none";
+	for(var i = 0; i < contactAry.length; i++){
+        contactAry[i].open = false;
+    }
 }
 
 function edit(){
+	var contactNum = 0;
+	for(var i = 0; i < contactAry.length; i++){
+		if(contactAry[i].open)
+			contactNum = i;
+	}
     document.getElementById("contact").style.display = "none";
-    document.getElementById("editname").innerHTML
+    document.getElementById("editname").value = contactAry[contactNum].name;
+	document.getElementById("editphone").value = contactAry[contactNum].phoneNum;
+	document.getElementById("editemail").value = contactAry[contactNum].email;
+	document.getElementById("edit").style.display = "block";
 }
 
 function save(){
+	var newName = document.getElementById("editname").value;
+	var newNumber = document.getElementById("editphone").value;
+	var newEmail = document.getElementById("editemail").value;
+	var contactNum = 0;
+	for(var i = 0; i < contactAry.length; i++){
+		if(contactAry[i].open)
+			contactNum = i;
+	}
+	contactAry[contactNum] = new contact(newName, newNumber, newEmail, true);
+	document.getElementById("edit").style.display = "none";
+	openContact(contactNum);
+	pageLoad();
+}
 
+function pageLoad(){
+	document.getElementById("contact0").innerHTML = contactAry[0].name;
+	document.getElementById("contact1").innerHTML = contactAry[1].name;
+	document.getElementById("contact2").innerHTML = contactAry[2].name;
 }
