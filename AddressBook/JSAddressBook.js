@@ -31,6 +31,7 @@ function openContact(evt, contactNum) {
         }
         evt.currentTarget.className += " activeTab";
     }
+    document.getElementById("addTab").className = "";
 }
 //Takes user back to home prompt to choose new contact
 function home() {
@@ -44,6 +45,7 @@ function home() {
     for (var i = 0; i < tabs.length; i++) {
         tabs[i].className = tabs[i].className.replace(" activeTab", "");
     }
+    document.getElementById("addTab").className = "";
 }
 //Allows the contact data to edit the selected value
 function edit() {
@@ -63,18 +65,28 @@ function save() {
     var newName = document.getElementById("editname").value;
     var newNumber = document.getElementById("editphone").value;
     var newEmail = document.getElementById("editemail").value;
-    var contactNum = 0;
+    var contactNum = null;
     for (var i = 0; i < contactAry.length; i++) {
         if (contactAry[i].open)
             contactNum = i;
     }
-    contactAry[contactNum] = new contact(newName, newNumber, newEmail, true);
+    if (contactNum === null) {
+        contactNum = contactAry.length;
+        contactAry.push(new contact(newName, newNumber, newEmail, true));
+        renderList();
+        var tabList = document.getElementsByClassName("tab");
+        tabList[contactNum].className += " activeTab";
+    }
+    else {
+        contactAry[contactNum] = new contact(newName, newNumber, newEmail, true);
+    }
     document.getElementById("edit").style.display = "none";
     openContact(null, contactNum);
     pageLoad();
+    document.getElementById("addTab").className = "";
 }
 
-function cancel(){
+function cancel() {
     var contactNum = 0;
     for (var i = 0; i < contactAry.length; i++) {
         if (contactAry[i].open)
@@ -83,6 +95,7 @@ function cancel(){
     document.getElementById("edit").style.display = "none";
     openContact(null, contactNum);
     pageLoad();
+    document.getElementById("addTab").className = "";
 }
 
 //Loads names to HTML when page loads
@@ -92,28 +105,48 @@ function pageLoad() {
     document.getElementById("contact2").innerHTML = contactAry[2].name;
 }
 
-function del(){
-    var contactNum = 0;
-    for (var i = 0; i < contactAry.length; i++) {
-        if (contactAry[i].open)
-            contactNum = i;
+function del() {
+    var x = confirm("Are you sure you want to delete?");
+    if (x) {
+        var contactNum = 0;
+        for (var i = 0; i < contactAry.length; i++) {
+            if (contactAry[i].open)
+                contactNum = i;
+        }
+        contactAry.splice(contactNum, 1);
+        renderList();
+        home();
     }
-    contactAry.splice(contactNum, 1);
-    renderList();
-    home();
 }
 
-function renderList(){
+function addContact() {
+    document.getElementById("addTab").className = "activeTab";
+    for (var i = 0; i < contactAry.length; i++) {
+        contactAry[i].open = false;
+    }
+    var tabs = document.getElementsByClassName("tab");
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].className = tabs[i].className.replace(" activeTab", "");
+    }
+    document.getElementById("contact").style.display = "none";
+    document.getElementById("home").style.display = "none";
+    document.getElementById("edit").style.display = "block";
+    document.getElementById("editname").value = "";
+    document.getElementById("editphone").value = "";
+    document.getElementById("editemail").value = "";
+}
+
+function renderList() {
     var list = document.getElementById("contactList");
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
-    for(var i=0;i<contactAry.length;i++){
+    for (var i = 0; i < contactAry.length; i++) {
         var entry = document.createElement('li');
         entry.appendChild(document.createTextNode(contactAry[i].name));
-        entry.setAttribute('onClick','openContact(event, '+i+')');
-        entry.setAttribute('id','contact' + i);
-        entry.setAttribute('class','tab');
+        entry.setAttribute('onClick', 'openContact(event, ' + i + ')');
+        entry.setAttribute('id', 'contact' + i);
+        entry.setAttribute('class', 'tab');
         list.appendChild(entry);
     }
 }
