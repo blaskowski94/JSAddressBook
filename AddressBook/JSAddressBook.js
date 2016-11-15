@@ -5,23 +5,30 @@ function contact(name, phoneNum, email, open) {
     this.email = email;
     this.open = open;
 }
+
 //Array to store the contact information
 var contactAry = [
     new contact("Bob Laskowski", "262-309-4205", "laskowsr@augsburg.edu", false),
     new contact("Hunter Winner", "651-500-1930", "winnerh@augsburg.edu", false),
     new contact("Manny Xinico", "555-555-5555", "manny@xinico.com", false)
 ];
+
+// T/F value to load variables on first page load
+var alreadyLoaded = false;
+// Global variables for commonly used IDs
+var addTabID, homeID, editID, nameID, phoneNumID, emailID, contactID, editnameID, editphoneID, editemailID;
+
 //Loads contact information when contact is selected
 function openContact(evt, contactNum) {
     for (var i = 0; i < contactAry.length; i++) {
         contactAry[i].open = false;
     }
-    document.getElementById("home").style.display = "none";
-    document.getElementById("edit").style.display = "none";
-    document.getElementById("name").innerHTML = contactAry[contactNum].name;
-    document.getElementById("phoneNum").innerHTML = contactAry[contactNum].phoneNum;
-    document.getElementById("email").innerHTML = contactAry[contactNum].email;
-    document.getElementById("contact").style.display = "block";
+    homeID.style.display = "none";
+    editID.style.display = "none";
+    nameID.innerHTML = contactAry[contactNum].name;
+    phoneNumID.innerHTML = contactAry[contactNum].phoneNum;
+    emailID.innerHTML = contactAry[contactNum].email;
+    contactID.style.display = "block";
     contactAry[contactNum].open = true;
 
     if (evt !== null) {
@@ -31,13 +38,14 @@ function openContact(evt, contactNum) {
         }
         evt.currentTarget.className += " activeTab";
     }
-    document.getElementById("addTab").className = "";
+    addTabID.className = "";
 }
+
 //Takes user back to home prompt to choose new contact
 function home() {
-    document.getElementById("home").style.display = "block";
-    document.getElementById("edit").style.display = "none";
-    document.getElementById("contact").style.display = "none";
+    homeID.style.display = "block";
+    editID.style.display = "none";
+    contactID.style.display = "none";
     for (var i = 0; i < contactAry.length; i++) {
         contactAry[i].open = false;
     }
@@ -45,8 +53,9 @@ function home() {
     for (var i = 0; i < tabs.length; i++) {
         tabs[i].className = tabs[i].className.replace(" activeTab", "");
     }
-    document.getElementById("addTab").className = "";
+    addTabID.className = "";
 }
+
 //Allows the contact data to edit the selected value
 function edit() {
     var contactNum = 0;
@@ -54,17 +63,18 @@ function edit() {
         if (contactAry[i].open)
             contactNum = i;
     }
-    document.getElementById("contact").style.display = "none";
-    document.getElementById("editname").value = contactAry[contactNum].name;
-    document.getElementById("editphone").value = contactAry[contactNum].phoneNum;
-    document.getElementById("editemail").value = contactAry[contactNum].email;
-    document.getElementById("edit").style.display = "block";
+    contactID.style.display = "none";
+    editnameID.value = contactAry[contactNum].name;
+    editphoneID.value = contactAry[contactNum].phoneNum;
+    editemailID.value = contactAry[contactNum].email;
+    editID.style.display = "block";
 }
+
 //Saves contact edits made by  user
 function save() {
-    var newName = document.getElementById("editname").value;
-    var newNumber = document.getElementById("editphone").value;
-    var newEmail = document.getElementById("editemail").value;
+    var newName = editnameID.value;
+    var newNumber = editphoneID.value;
+    var newEmail = editemailID.value;
     var contactNum = null;
     for (var i = 0; i < contactAry.length; i++) {
         if (contactAry[i].open)
@@ -80,10 +90,10 @@ function save() {
     else {
         contactAry[contactNum] = new contact(newName, newNumber, newEmail, true);
     }
-    document.getElementById("edit").style.display = "none";
+    editID.style.display = "none";
     openContact(null, contactNum);
     pageLoad();
-    document.getElementById("addTab").className = "";
+    addTabID.className = "";
 }
 
 function cancel() {
@@ -92,10 +102,10 @@ function cancel() {
         if (contactAry[i].open)
             contactNum = i;
     }
-    document.getElementById("edit").style.display = "none";
+    editID.style.display = "none";
     openContact(null, contactNum);
     pageLoad();
-    document.getElementById("addTab").className = "";
+    addTabID.className = "";
 }
 
 //Loads names to HTML when page loads
@@ -103,7 +113,24 @@ function pageLoad() {
     document.getElementById("contact0").innerHTML = contactAry[0].name;
     document.getElementById("contact1").innerHTML = contactAry[1].name;
     document.getElementById("contact2").innerHTML = contactAry[2].name;
+
+
+    if(!alreadyLoaded){
+        addTabID = document.getElementById("addTab")
+        homeID = document.getElementById("home");
+        nameID = document.getElementById("name");
+        phoneNumID = document.getElementById("phoneNum");
+        emailID = document.getElementById("email");
+        contactID = document.getElementById("contact");
+        editID = document.getElementById("edit");
+        editnameID = document.getElementById("editname");
+        editphoneID = document.getElementById("editphone");
+        editemailID = document.getElementById("editemail")
+
+        alreadyLoaded = true;
+    }
 }
+
 
 function del() {
     var x = confirm("Are you sure you want to delete?");
@@ -120,7 +147,7 @@ function del() {
 }
 
 function addContact() {
-    document.getElementById("addTab").className = "activeTab";
+    addTabID.className = "activeTab";
     for (var i = 0; i < contactAry.length; i++) {
         contactAry[i].open = false;
     }
@@ -128,12 +155,12 @@ function addContact() {
     for (var i = 0; i < tabs.length; i++) {
         tabs[i].className = tabs[i].className.replace(" activeTab", "");
     }
-    document.getElementById("contact").style.display = "none";
-    document.getElementById("home").style.display = "none";
-    document.getElementById("edit").style.display = "block";
-    document.getElementById("editname").value = "";
-    document.getElementById("editphone").value = "";
-    document.getElementById("editemail").value = "";
+    contactID.style.display = "none";
+    homeID.style.display = "none";
+    editID.style.display = "block";
+    editnameID.value = "";
+    editphoneID.value = "";
+    editemailID.value = "";
 }
 
 function renderList() {
