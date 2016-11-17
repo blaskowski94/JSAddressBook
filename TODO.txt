@@ -1,4 +1,2 @@
 -Add more comments
 -Add input validation for e-mail and phone number
--Make name required on add contact so blank contact cannot be added
--Add a maximum number of contacts

@@ -85,3 +85,11 @@ footer {
     display: none;
 }
 
+.logoImg{
+    width: 25px;
+    heigh: 25px;
+}
+
+#addTab{
+    padding-top: 5px;
+}

@@ -80,37 +80,42 @@ function edit() {
 //Saves contact edits made by  user
 function save() {
     // Get the new values to be saved
-    var newName = editnameID.value;
+    var newName = editnameID.value.trim();
     var newNumber = editphoneID.value;
     var newEmail = editemailID.value;
-    // If an existing contact, get the number
-    var contactNum = null;
-    for (var i = 0; i < contactAry.length; i++) {
-        if (contactAry[i].open)
-            contactNum = i;
-    }
-    // If it is a new contact being added, contactNum will be null
-    if (contactNum === null) {
-        // Set contact num to index new element will be
-        contactNum = contactAry.length;
-        // Add new element to end of array
-        contactAry.push(new contact(newName, newNumber, newEmail, true));
-        renderList(contactNum);
-        // Select the new tab
-        var tabList = document.getElementsByClassName("tab");
-        tabList[contactNum].className += " activeTab";
+    if (!(newName)) {
+        alert("Name cannot be empty");
     }
     else {
-        // Update existing contact
-        contactAry[contactNum] = new contact(newName, newNumber, newEmail, true);
+        // If an existing contact, get the number
+        var contactNum = null;
+        for (var i = 0; i < contactAry.length; i++) {
+            if (contactAry[i].open)
+                contactNum = i;
+        }
+        // If it is a new contact being added, contactNum will be null
+        if (contactNum === null) {
+            // Set contact num to index new element will be
+            contactNum = contactAry.length;
+            // Add new element to end of array
+            contactAry.push(new contact(newName, newNumber, newEmail, true));
+            renderList(contactNum);
+            // Select the new tab
+            var tabList = document.getElementsByClassName("tab");
+            tabList[contactNum].className += " activeTab";
+        }
+        else {
+            // Update existing contact
+            contactAry[contactNum] = new contact(newName, newNumber, newEmail, true);
+        }
+        // Hide edit screen
+        editID.style.display = "none";
+        // Display the contact
+        openContact(contactNum);
+        renderList(contactNum);
+        // Deselect add tab
+        addTabID.className = "";
     }
-    // Hide edit screen
-    editID.style.display = "none";
-    // Display the contact
-    openContact(contactNum);
-    renderList(contactNum);
-    // Deselect add tab
-    addTabID.className = "";
 }
 // Functionality for the cancel button on edit screen, returns to the contact being displayed or home if no contact was selected
 function cancel() {
@@ -175,6 +180,7 @@ function del() {
 }
 // Opens the edit display with blank values to add new contact
 function addContact() {
+    if(contactAry.length < 15){
     // Highlight add contact tab
     addTabID.className = "activeTab";
     // Set all the open values to false
@@ -194,7 +200,10 @@ function addContact() {
     // Make text boxes blank
     editnameID.value = "";
     editphoneID.value = "";
-    editemailID.value = "";
+    editemailID.value = "";}
+    else{
+        alert("You can only have 15 contacts. Please delete a contact before adding a new one.")
+    }
 }
 // Updates the tab list on the left hand side of the screen with current elements in array, argument is the tab that
 // should be selected, if no tab should be selected the value should be < 0 for the parameter
