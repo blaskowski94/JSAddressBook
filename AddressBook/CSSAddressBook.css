@@ -60,7 +60,7 @@ footer {
     width: 100%;
     height: 11%;
 }
-/* On small screens, set height to 'auto' for sidenav and grid */
+/* On small screens, define styling */
 @media screen and (max-width: 767px) {
     .sidenav {
         width: 150px;
@@ -78,6 +78,7 @@ footer {
         margin-left: 150px;
     }
 }
+/* No display for contact and edit by default */
 .contact {
     display: none;
 }
@@ -85,11 +86,13 @@ footer {
     display: none;
 }
 
+/* Set size of logo image */
 .logoImg{
     width: 25px;
     heigh: 25px;
 }
 
+/* Add padding to add contact tab */
 #addTab{
     padding-top: 5px;
 }

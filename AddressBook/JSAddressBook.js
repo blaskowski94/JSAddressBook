@@ -1,5 +1,5 @@
 //Defines a contact object
-function contact(name, phoneNum, email, open) {
+function Contact(name, phoneNum, email, open) {
     this.name = name;
     this.phoneNum = phoneNum;
     this.email = email;
@@ -7,12 +7,12 @@ function contact(name, phoneNum, email, open) {
 }
 //Array to store the contact information
 var contactAry = [
-    new contact("Bob Laskowski", "262-309-4205", "laskowsr@augsburg.edu", false),
-    new contact("Hunter Winner", "651-500-1930", "winnerh@augsburg.edu", false),
-    new contact("Manuel Xinico", "612-229-1463", "xinico12@augsburg.edu", false),
-    new contact("Erik Steinmetz", "612-330-1062", "stainmeee@augsburg.edu", false),
-    new contact("Alan Turing", "555-555-5555", "turing@augsburg.edu", false),
-    new contact("Nikola Tesla ", "777-777-7777", "tesla@augsburg.edu", false)
+    new Contact("Bob Laskowski", "262-309-4205", "laskowsr@augsburg.edu", false),
+    new Contact("Hunter Winner", "651-500-1930", "winnerh@augsburg.edu", false),
+    new Contact("Manuel Xinico", "612-229-1463", "xinico12@augsburg.edu", false),
+    new Contact("Erik Steinmetz", "612-330-1062", "stainmeee@augsburg.edu", false),
+    new Contact("Alan Turing", "555-555-5555", "turing@augsburg.edu", false),
+    new Contact("Nikola Tesla ", "777-777-7777", "tesla@augsburg.edu", false)
 ];
 
 // Global variables for commonly used IDs
@@ -54,8 +54,8 @@ function home() {
     }
     // Deselect all contact tabs
     var tabs = document.getElementsByClassName("tab");
-    for (var i = 0; i < tabs.length; i++) {
-        tabs[i].className = tabs[i].className.replace(" activeTab", "");
+    for (var j = 0; i < tabs.length; i++) {
+        tabs[i].className = tabs[j].className.replace(" activeTab", "");
     }
     // Deselect add contact tab
     addTabID.className = "";
@@ -79,12 +79,19 @@ function edit() {
 }
 //Saves contact edits made by  user
 function save() {
+    var emailRE = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    var phoneRE = /^[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/;
     // Get the new values to be saved
     var newName = editnameID.value.trim();
-    var newNumber = editphoneID.value;
-    var newEmail = editemailID.value;
-    if (!(newName)) {
-        alert("Name cannot be empty");
+    var newNumber = editphoneID.value.trim();
+    var newEmail = editemailID.value.trim();
+    if (!(newName) || (!emailRE.test(newEmail) && newEmail) || (!phoneRE.test(newNumber)) && newNumber) {
+        if(!(newName))
+            alert("Name cannot be empty");
+        if(!emailRE.test(newEmail) && newEmail)
+            alert("You entered an invalid e-mail address");
+        if(!phoneRE.test(newNumber) && newNumber)
+            alert("You entered an invalid phone number");
     }
     else {
         // If an existing contact, get the number
@@ -98,7 +105,7 @@ function save() {
             // Set contact num to index new element will be
             contactNum = contactAry.length;
             // Add new element to end of array
-            contactAry.push(new contact(newName, newNumber, newEmail, true));
+            contactAry.push(new Contact(newName, newNumber, newEmail, true));
             renderList(contactNum);
             // Select the new tab
             var tabList = document.getElementsByClassName("tab");
@@ -106,7 +113,7 @@ function save() {
         }
         else {
             // Update existing contact
-            contactAry[contactNum] = new contact(newName, newNumber, newEmail, true);
+            contactAry[contactNum] = new Contact(newName, newNumber, newEmail, true);
         }
         // Hide edit screen
         editID.style.display = "none";
@@ -189,8 +196,8 @@ function addContact() {
     }
     // Deselect all of the active tabs
     var tabs = document.getElementsByClassName("tab");
-    for (var i = 0; i < tabs.length; i++) {
-        tabs[i].className = tabs[i].className.replace(" activeTab", "");
+    for (var j = 0; i < tabs.length; i++) {
+        tabs[j].className = tabs[j].className.replace(" activeTab", "");
     }
     // Hide home and contact displays
     contactID.style.display = "none";

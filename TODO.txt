@@ -1,2 +1,0 @@
--Add more comments
--Add input validation for e-mail and phone number
