@@ -5,7 +5,6 @@ function contact(name, phoneNum, email, open) {
     this.email = email;
     this.open = open;
 }
-
 //Array to store the contact information
 var contactAry = [
     new contact("Bob Laskowski", "262-309-4205", "laskowsr@augsburg.edu", false),
@@ -37,7 +36,6 @@ function openContact(contactNum) {
     contactID.style.display = "block";
     // Set the open property for this contact to true
     contactAry[contactNum].open = true;
-
     renderList(contactNum);
 }
 
@@ -60,7 +58,6 @@ function home() {
     // Deselect add contact tab
     addTabID.className = "";
 }
-
 // Allows the contact data to edit the selected value
 function edit() {
     // Figure out which contact is open and to be edited
@@ -78,7 +75,6 @@ function edit() {
     // Display edit screen
     editID.style.display = "block";
 }
-
 //Saves contact edits made by  user
 function save() {
     // Get the new values to be saved
@@ -114,7 +110,6 @@ function save() {
     // Deselect add tab
     addTabID.className = "";
 }
-
 // Functionality for the cancel button on edit screen, returns to the contact being displayed or home if no contact was selected
 function cancel() {
     // Figure out which contact was selected, null if we were on welcome screen
@@ -138,7 +133,6 @@ function cancel() {
     // Deselect edit tab
     addTabID.className = "";
 }
-
 //Loads names to HTML when page loads
 function pageLoad() {
     // Load tabs from contact array
@@ -156,7 +150,6 @@ function pageLoad() {
     editphoneID = document.getElementById("editphone");
     editemailID = document.getElementById("editemail")
 }
-
 // Functionality of delete button, prompts to confirm you want to delete, removes the contact if yes, does nothing otherwise
 function del() {
     // Assign T/F value to x based on answer to prompt
@@ -178,7 +171,6 @@ function del() {
     }
     // Otherwise do nothing
 }
-
 // Opens the edit display with blank values to add new contact
 function addContact() {
     // Highlight add contact tab
@@ -202,7 +194,6 @@ function addContact() {
     editphoneID.value = "";
     editemailID.value = "";
 }
-
 // Updates the tab list on the left hand side of the screen with current elements in array, argument is the tab that
 // should be selected, if no tab should be selected the value should be < 0 for the parameter
 function renderList(selectedTab) {
